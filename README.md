@@ -9,3 +9,5 @@
 [Ejercicios de POO](./POO/)
 
 [Ejercicios de Colecciones](./Colecciones/)
+
+[Ejercicios de Excepciones](./Excepciones/)
