@@ -1,6 +1,12 @@
 from typeguard import typechecked
 
 
+class OptNotPosInt(Exception):
+    def __init__(self, value):
+        super().__init__(f"La opción seleccionada debe ser un número entero. Introducido: '{value}'.")
+        self.value = value
+
+
 @typechecked
 class Menu:
     def __init__(self, *options: str):
@@ -19,11 +25,16 @@ class Menu:
 
     def pick_option(self):
         print(self)
+        chosen_one = input('Indique la opción que desea escoger (debe ser un número entero): ')
+
         try:
-            chosen_one = int(input('Indique la opción que desea escoger (debe ser un número entero): '))
-        except TypeError or ValueError:
-            print("Asegúrese de introducir un número entero para indicar la opción que desea seleccionar.")
+            chosen_one = int(chosen_one)
+            if chosen_one < 0:
+                raise OptNotPosInt(chosen_one)
+        except ValueError:
+            raise OptNotPosInt(chosen_one)
+        except OptNotPosInt as e:
+            print(f'La opción introducida debe ser un entero positivo. Recibido: "{e.value}"')
 
         if 0 < chosen_one <= len(self.__options):
             return chosen_one - 1
-        print('La opción seleccionada no existe.')

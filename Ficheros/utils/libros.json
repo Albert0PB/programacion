@@ -1,0 +1,25 @@
+{
+  "books": [
+    {
+      "author": "Yukio Mishima",
+      "title": "The Temple of the Golden Pavilion",
+      "country": "Japan"
+    },
+    {
+      "author": "Leon Tolstoi",
+      "title": "Anna Karenina",
+      "country": "Russia"
+    },
+    {
+      "author": "Joseph Conrad",
+      "title": "The Heart of Darkness",
+      "country": "United Kingdom"
+    },
+    {
+      "author": "Tom Wolfe",
+      "title": "The Bonfire of Vanities",
+      "country": "United States"
+    }
+  ]
+}
+
