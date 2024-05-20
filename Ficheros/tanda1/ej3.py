@@ -6,4 +6,3 @@ Pruébalo con un programa.
 
 Author: Alberto Pérez Bernabeu
 """
-from repo.utils.bank_accounts import BankAccount

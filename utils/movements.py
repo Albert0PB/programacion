@@ -4,6 +4,8 @@ from abc import ABC
 
 @typechecked
 class Operation(ABC):
+    # Implementar como dataclass; las propiedades están permitidas en dataclasses
+
     def __init__(self, int_amount: int, dec_amount: int, currency_code: str):
         self.__int_amount = int_amount
         self.__dec_amount = dec_amount
@@ -41,3 +43,18 @@ class Operation(ABC):
             raise ValueError(f"La moneda se indica con un código de 3 letras. Introducido: '{value}'")
         self.__currency_code = value
 
+
+class Withdraw(Operation):
+    pass
+
+
+class Deposit(Operation):
+    pass
+
+
+class IncomingTransfer(Operation):
+    pass
+
+
+class OutgoingTransfer(Operation):
+    pass

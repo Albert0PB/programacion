@@ -3,7 +3,6 @@ from typeguard import typechecked
 from random import randint
 
 
-
 def account_number_generator():
     return (f'{randint(0, 9)}{randint(0, 9)}{randint(0, 9)}{randint(0, 9)}'
             f'{randint(0, 9)}{randint(0, 9)}{randint(0, 9)}{randint(0, 9)}'
@@ -19,6 +18,8 @@ def check_positive_quantity(quantity: (int, float)):
 
 @typechecked
 class BankAccount:
+    # Implementar Initial Balance para la creación de cuentas con saldos iniciales positivos
+
     __existent_accounts = []
 
     def __init__(self, credit: float = 0.0):
