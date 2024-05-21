@@ -16,7 +16,7 @@
 
 Author: Alberto Pérez Bernabeu
 Starting date: 15/5/2024
-Last modification:
+Last modification: 21/5/2024
 """
 import random
 import inflect
