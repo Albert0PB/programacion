@@ -23,6 +23,10 @@ import inflect
 import math
 from functools import reduce
 
+LOWER_LIMIT = -5000
+UPPER_LIMIT = 5000
+NUMBERS_TO_GENERATE = 100
+
 
 def true_if_prime(n):
     if n < 2:
@@ -39,7 +43,7 @@ def true_if_pair(n):
     return True if n % 2 == 0 else False
 
 
-random_list = list((random.randint(-5000, 5000) for i in range(100)))
+random_list = list((random.randint(LOWER_LIMIT, UPPER_LIMIT) for i in range(NUMBERS_TO_GENERATE)))
 num_namer = inflect.engine()
 
 # Uso de map
@@ -47,15 +51,14 @@ squares = list(map(lambda x: x ** 2, random_list))
 strings = list(map(lambda x: num_namer.number_to_words(x), random_list))
 
 # Uso de filter
-multiples_of_three = set(filter(lambda x: True if x % 3 == 0 else False, random_list))
-negatives = set(filter(lambda x: True if x < 0 else False, random_list))
-primes = set(filter(lambda x: true_if_prime(x), random_list))
-even_numbers = set(filter(lambda x: True if x % 2 == 0 else False, random_list))  # será usado en la suma de pares
+multiples_of_three = filter(lambda x: True if x % 3 == 0 else False, random_list)
+negatives = filter(lambda x: True if x < 0 else False, random_list)
+primes = filter(lambda x: true_if_prime(x), random_list)
 
 # Uso de reduce
-total_sum = reduce(lambda x, y: x + y, random_list)
-evens_sum = reduce(lambda x, y: x + y, even_numbers)
-primes_product = reduce(lambda x, y: x * y, primes)
+total_sum = reduce(lambda total, x: total + x, random_list)
+evens_sum = reduce(lambda total, x: total + x, set(filter(lambda x: True if x % 2 == 0 else False, random_list)))
+primes_product = reduce(lambda total, x: total + x, primes)
 
 if __name__ == "__main__":
     print('Lista base generada aleatoriamente:\n', random_list, '\n')
