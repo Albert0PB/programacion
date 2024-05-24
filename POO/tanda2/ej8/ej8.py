@@ -17,7 +17,7 @@ Comparar la fecha introducida con otra. Pide una fecha al usuario en formato dd/
 y la comparará con la que tenemos guardada, posteriormente mostrará si esta fecha es anterior, igual o posterior a la
 que tenemos almacenada y el número de días comprendido entre las dos fechas.
 
-Mostrar la fecha en formato largo (ejemplo: "lunes, 1 de febrero de 2021").
+Mostrar la fecha en formato largo (palabras: "lunes, 1 de febrero de 2021").
 
 Terminar.
 

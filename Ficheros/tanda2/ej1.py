@@ -1,8 +1,18 @@
 """
 1. Realiza un programa que sea capaz de ordenar alfabéticamente las palabras contenidas en un fichero de texto. El
 nombre del fichero que contiene las palabras se debe pasar como argumento en la línea de comandos. El nombre del
-fichero resultado debe ser el mismo que el original añadiendo la coletilla sort, por ejemplo palabras_sort.txt.
+fichero resultado debe ser el mismo que el original añadiendo la coletilla sort, por palabras palabras_sort.txt.
 Suponemos que cada palabra ocupa una línea.
 
 Author: Alberto Pérez Bernabeu
 """
+
+
+def main():
+    with open('palabras', 'r') as file:
+        with open('palabras_sort', 'w') as output:
+            output.writelines(sorted(file.readlines()))
+
+
+if __name__ == '__main__':
+    main()

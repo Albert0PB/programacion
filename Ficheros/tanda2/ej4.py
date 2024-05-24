@@ -5,7 +5,7 @@ Se utilizaría de la siguiente manera:
 
 python quita-comentarios.py <PROGRAMA_ORIGINAL> <PROGRAMA_LIMPIO>
 
-Por ejemplo:
+Por palabras:
 
 python quita-comentarios.py Holav1.java Holav2.java
 
