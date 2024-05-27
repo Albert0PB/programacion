@@ -19,3 +19,75 @@ Para desencriptar necesitas una clave que debes pedir al usuario.
 
 Author: Alberto Pérez Bernabeu
 """
+import sys
+
+BASE_CORRESPONDENCES = {0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E', 5: 'F', 6: 'G', 7: 'H', 8: 'I', 9: 'J', 10: 'K',
+                        11: 'L', 12: 'M', 13: 'N', 14: 'Ñ', 15: 'O', 16: 'P', 17: 'Q', 18: 'R', 19: 'S', 20: 'T',
+                        21: 'U', 22: 'V', 23: 'W', 24: 'X', 25: 'Y', 26: 'Z'}
+
+LETTERS = "A B C D E F G H I J K L M N Ñ O P Q R S T U V W X Y Z".split()
+
+
+def check_argv():
+    if len(sys.argv) < 2:
+        print("Código de Error 1: no se ha pasado ningún argumento a este programa.", file=sys.stderr)
+    elif len(sys.argv) == 2:
+        while True:
+            keep_going = input("Sólo ha indicado un fichero, por lo que el texto desencriptado se sobreescribirá "
+                               "sobre él. ¿Desea continuar? [S/N]\n")
+            if keep_going.upper() == "S":
+                print("El programa continuará ejecutándose.")
+                break
+            elif keep_going.upper() == "N":
+                exit("Cancelada la ejecución del programa.")
+            else:
+                print("Por favor, asegúrese de indicar con 'S' o 'N' si desea continuar la ejecución del programa. "
+                      f"Ha indicado: '{keep_going}'.")
+    elif len(sys.argv) > 3:
+        exit("Ha indicado demasiados argumentos. Este programa funciona pasándole el nombre de un fichero encriptado "
+             "por el método César y, opcionalmente, el nombre de un fichero sobre el que escribir el texto "
+             "desencriptado.")
+
+
+def input_int(msg: str = ""):
+    while True:
+        try:
+            integer = int(input(msg))
+            return integer
+        except ValueError:
+            print(f"Asegúrese de introducir un número entero. Ha introducido: '{integer}'.")
+
+
+def main():
+    check_argv()
+
+    caesar_minuend = input_int("Indique, con un entero, el número de posiciones que debe 'desplazarse' cada letra "
+                               "del texto a desencriptar (método César): ")
+
+    try:
+        decrypted_text = ""
+        with open(sys.argv[1], 'r') as file:
+            for line in file.read():
+                for encrypted_char in line:
+                    if encrypted_char.isalpha():
+                        char_to_add = LETTERS.index(encrypted_char.upper()) - caesar_minuend
+                        char_to_add += 26 if char_to_add < 0 else 0
+                        decrypted_text += BASE_CORRESPONDENCES[char_to_add]
+                    else:
+                        decrypted_text += encrypted_char
+        try:
+            if len(sys.argv) == 2:
+                with open(sys.argv[1], "w") as file:
+                    file.write(decrypted_text)
+            else:
+                with open(sys.argv[2], "w") as file:
+                    file.write(decrypted_text)
+        except (FileNotFoundError, PermissionError) as e:
+            print(f"Código de Error 3: {e}", file=sys.stderr)
+
+    except (PermissionError, FileNotFoundError) as e:
+        print("Código de Error 2:", e, file=sys.stderr)
+
+
+if __name__ == "__main__":
+    main()

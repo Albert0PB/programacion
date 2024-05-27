@@ -1,0 +1,17 @@
+<nodo_raiz>
+    <nodo_hijo1>
+        <nodo_hijo1_de_hijo1 />
+        <nodo_hijo2_de_hijo1 />
+        <nodo-hijo3-de-hijo1 />
+    </nodo_hijo1>
+    <nodo_hijo2>
+        <nodo_hijo1_de_hijo2 />
+        <nodo_hijo2_de_hijo2 />
+        <nodo-hijo3-de-hijo2 />
+    </nodo_hijo2>
+    <nodo_hijo3>
+        <nodo_hijo1_de_hijo3 />
+        <nodo_hijo2_de_hijo3 />
+        <nodo-hijo3-de-hijo3 />
+    </nodo_hijo3>
+</nodo_raiz>
